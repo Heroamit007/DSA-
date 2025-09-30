@@ -40,6 +40,33 @@ class SinglyLinkedList:
     def delete_first(self):
         if self.start is not None:
             self.start = self.start.next
+    def delete_last(self):
+        if self.start is None:
+            pass
+        elif self.start.next is None:
+            self.start = None
+        else:
+            temp = self.start
+            while temp.next.next is not None:
+                temp = temp.next
+            temp.next = None
+    def delete_item(self, data):
+        if self.start is None:
+            pass
+        elif self.start.next is None:
+            if self.start.item == data:
+                self.start = None
+        else:
+            temp = self.start
+            if temp.item == data:
+                self.start = temp.next
+            else:
+                while temp.next is not None:
+                    if temp.next.item == data:
+                        temp.next = temp.next.next
+                        break
+                    temp = temp.next
+
 
 # deriver code
 myList = SinglyLinkedList()
