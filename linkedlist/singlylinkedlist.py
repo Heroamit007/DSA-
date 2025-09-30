@@ -66,7 +66,21 @@ class SinglyLinkedList:
                         temp.next = temp.next.next
                         break
                     temp = temp.next
+    def __iter__(self):
+        return SLLIterator(self.start)
 
+class SLLIterator:
+    def __init__(self,start):
+        self.current = start
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if self.current is None:
+            raise StopIteration
+        else:
+            data = self.current.item
+            self.current = self.current.next
+            return data
 
 # deriver code
 myList = SinglyLinkedList()
@@ -75,4 +89,9 @@ myList.insert_at_start(20)
 myList.insert_at_last(30)
 myList.insert_after(myList.search(20),25)
 myList.print_List()
+myList.delete_item(20)
+print()
+myList.print_List()
+for i in myList:
+    print(i,end=" ")
 print()
