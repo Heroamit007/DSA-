@@ -4,10 +4,16 @@ class Employee:
         self.salary = salary
     def calculate_bonus(self):
         return self.salary * 0.10
+# class Manager(Employee):
+#     def calculate_bonus(self):
+#         return self.salary * 0.25
+
 class Manager(Employee):
     def calculate_bonus(self):
-        return self.salary * 0.25
-
+        standerd_bonus = super().calculate_bonus()
+        extra_bonus = 20000
+        return standerd_bonus + extra_bonus
+        
 e = Employee("raj", 8000)
 m = Manager("Amit", 100000)
 
